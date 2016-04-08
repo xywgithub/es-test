@@ -1,0 +1,44 @@
+<assembly>
+    <id>generic</id>
+    <!-- Specifies that our binary distribution is a zip package -->
+    <formats>
+        <format>zip</format>
+    </formats>
+
+    <includeBaseDirectory>true</includeBaseDirectory>
+    <baseDirectory>.</baseDirectory>
+
+    <files>
+        <file>
+            <source>
+                target/${project.artifactId}-${project.version}-${project.build.jarDescriptor}.jar
+            </source>
+            <outputDirectory>lib</outputDirectory>
+        </file>
+    </files>
+
+    <fileSets>
+        <fileSet>
+            <directory>.</directory>
+            <outputDirectory>.</outputDirectory>
+            <includes>
+                <include>README.txt</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <directory>src/main/scripts</directory>
+            <outputDirectory>./bin</outputDirectory>
+            <includes>
+                <include>run.sh</include>
+                <include>run.bat</include>
+            </includes>
+        </fileSet>
+        <fileSet>
+            <!-- Create an empty directory -->
+            <outputDirectory>logs</outputDirectory>
+            <excludes>
+                <exclude>**/*</exclude>
+            </excludes>
+        </fileSet>
+    </fileSets>
+</assembly>
